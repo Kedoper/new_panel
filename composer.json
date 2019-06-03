@@ -1,0 +1,10 @@
+{
+    "require": {
+        "vkcom/vk-php-sdk": "^5.95",
+        "fzaninotto/faker": "^1.8",
+        "guzzlehttp/guzzle": "^6.3",
+        "phpoffice/phpspreadsheet": "^1.7",
+        "phpgangsta/googleauthenticator": "dev-master",
+        "vlucas/phpdotenv": "^3.3"
+    }
+}
