@@ -1,3 +1,65 @@
-*{
-  color: red;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #2d2e33;
+  //overflow: hidden;
+  color: #fff;
+}
+
+input, select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 6px;
+  margin: 0 0 10px;
+  border: 1px solid #343a40;
+  border-radius: 5px;
+  background-color: #343a40;
+  color: white;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: white;
+}
+
+button {
+  display: block;
+  margin-top: 20px;
+  min-width: 70%;
+  border: 1px solid #343a40;
+  border-radius: 5px;
+  background-color: #343a40;
+  color: white;
+  padding: 5px;
+}
+
+input, label, button, input:focus, label:focus, button:focus, select, select:focus {
+  outline: none;
+}
+
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
+  font-weight: 500;
+}
+
+.navbar-brand {
+  width: 100px;
+  height: 60px;
+  background-image: url("/stuff/img/wp_logo.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  margin-bottom: 10px;
 }

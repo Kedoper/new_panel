@@ -1,24 +1,31 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-$dotenv = Dotenv\Dotenv::create(__DIR__,".env");
-$dotenv->load();
-include $_SERVER['DOCUMENT_ROOT'] . "/settings/db.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/settings/loadAll.php";
 
 function pre($data = [])
 {
     echo "<pre>" . print_r($data, 1) . "</pre>";
 }
-$request_method = $_SERVER['REQUEST_METHOD'];
 
+$page = array_keys($_REQUEST);
 if (!empty($_SESSION['login_token'])) {
-    if ($request_method == "GET"){
-        switch (array_key_first($_REQUEST)){
+    if ($_SERVER['REQUEST_METHOD'] == "GET"){
+        switch ($page[0]){
             case "home":
                 include $_SERVER['DOCUMENT_ROOT'].getenv("HOME_DIR")."/home.php";
                 break;
+            case "settings":
+                include $_SERVER['DOCUMENT_ROOT'].getenv("HOME_DIR")."/settings.php";
+                break;
+            case "create-report":
+                include $_SERVER['DOCUMENT_ROOT'].getenv("HOME_DIR")."/create-report.php";
+                break;
+            default:
+                header("Location: /?home");
+                break;
         }
+    } else {
+        echo "df";
     }
 } else {
-    header("Location: /auth.php");
+    header("Location: /auth");
 }
-

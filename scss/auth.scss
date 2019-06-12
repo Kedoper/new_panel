@@ -1,72 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
+@import url('/scss/main.scss');
 
 body {
-  background-color: #2d2e33;
-  overflow-x: hidden;
+  overflow: hidden;
 }
-
-input {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  padding: 6px;
-  margin: 0 0 10px;
-  border: 1px solid #343a40;
-  border-radius: 5px;
-  background-color: #343a40;
-  color: white;
-}
-
-
-label {
-  display: block;
-  margin-bottom: 0.9rem;
-  color: white;
-}
-
-button {
-  display: block;
-  margin-top: 20px;
-  min-width: 70%;
-  border: 1px solid #343a40;
-  border-radius: 5px;
-  background-color: #343a40;
-  color: white;
-  padding: 5px;
-}
-
-input, label, button {
-  outline: none;
-}
-
-.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
-  font-weight: 500;
-}
-
-.navbar-brand {
-  width: 100px;
-  height: 60px;
-  background-image: url("/stuff/img/wp_logo.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.navbar {
-  margin-bottom: 10px;
-}
-
-.container {
-  color: #fff;
-}
-
 .row {
 }
 
@@ -119,4 +55,26 @@ input, label, button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 270px;
+  top: 230px;
+  height: 200px;
+  transition: all 1s cubic-bezier(0.82, -0.39, 0.35, 1.51);
+  padding: 20px;
+  color: white;
+  &__text {
+    padding: 8px;
+    background-color: #343a40;
+    border-radius: 5px;
+    max-width: 360px;
+  }
+  &__hide {
+    top: 3000px;
+    transition: all 1s cubic-bezier(0.82, -0.39, 0.35, 1.51);
+  }
 }

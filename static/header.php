@@ -8,17 +8,17 @@ if (!empty($_SESSION['login_token'])) {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Главная</a>
+                <li class="nav-item" data-hlink="0">
+                    <a class="nav-link" href="/?home">Главная</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Создать отчет</a>
+                <li class="nav-item" data-hlink="1">
+                    <a class="nav-link" href="/?create-report">Создать отчет</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Выставить счет</a>
+                <li class="nav-item" data-hlink="2">
+                    <a class="nav-link disabled" href="/?create-invoice">Выставить счет</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Настройки</a>
+                <li class="nav-item" data-hlink="3">
+                    <a class="nav-link " href="/?settings">Настройки</a>
                 </li>
             </ul>
         </div>
@@ -39,3 +39,21 @@ if (!empty($_SESSION['login_token'])) {
     </nav>
     <?
 }
+?>
+<script !src="">
+    var page = `<?=$page[0]?>`;
+    switch (page) {
+        case "home":
+            document.querySelector('.nav-item[data-hlink="0"]').classList.add("active");
+            break;
+        case "create-report":
+            document.querySelector('.nav-item[data-hlink="1"]').classList.add("active");
+            break;
+        case "create-invoice":
+            document.querySelector('.nav-item[data-hlink="2"]').classList.add("active");
+            break;
+        case "settings":
+            document.querySelector('.nav-item[data-hlink="3"]').classList.add("active");
+            break;
+    }
+</script>
