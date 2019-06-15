@@ -8,10 +8,11 @@
     <title>Панель | Главная</title>
 
     <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css?<?= rand(999999, null) ?>">
+    <link rel="stylesheet" href="/libs/charts/charts.css">
     <link rel="stylesheet" href="/css/home.css?<?= rand(999999, null) ?>">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <script src="/libs/jquery/jq.js"></script>
+    <script src="/libs/charts/charts.js"></script>
 </head>
 <body>
 <?php
@@ -59,6 +60,8 @@ include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
                 <p>При загрузке возникли проблемы, попробуйте позже</p>
             </div>
         </div>
+
+        <canvas id="myChart"></canvas>
     </div>
 
 

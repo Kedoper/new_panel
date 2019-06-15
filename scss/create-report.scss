@@ -1,1 +1,31 @@
 @import "home";
+
+.cr-row {
+  background-color: $section_bg_color;
+
+  &:first-child {
+    font-size: 20pt;
+    padding: 0;
+    background: none;
+  }
+}
+.custom-list {
+  display: flex;
+  flex-direction: column;
+  &>&__item {
+    padding: 14px;
+    position: relative;
+    transition: background-color .2s;
+    &:hover {
+      background: gray;
+    }
+    &.select {
+      background: $red;
+      //transition: background-color .2s;
+    }
+  }
+}
+.side-menu {
+  padding: 5px;
+  //border: 1px solid $red;
+}

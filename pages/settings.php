@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css?<?= rand(999999, null) ?>">
     <link rel="stylesheet" href="/css/settings.css?<?= rand(999999, null) ?>">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/libs/jquery/jq.js"></script>
 
 </head>
 <body>
