@@ -61,7 +61,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
             </div>
         </div>
 
-        <canvas id="myChart"></canvas>
     </div>
 
 

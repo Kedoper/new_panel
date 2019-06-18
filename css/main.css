@@ -8,7 +8,6 @@
 
 body {
   background-color: #2d2e33;
-  overflow: hidden;
   color: #fff;
 }
 
@@ -18,9 +17,9 @@ input, select {
   line-height: inherit;
   padding: 6px;
   margin: 0 0 10px;
-  border: 1px solid #343a40;
+  border: 1px solid #2D2E33;
   border-radius: 5px;
-  background-color: #343a40;
+  background-color: #2D2E33;
   color: white;
 }
 
@@ -34,9 +33,9 @@ button {
   display: block;
   margin-top: 20px;
   min-width: 70%;
-  border: 1px solid #343a40;
+  border: 1px solid #2D2E33;
   border-radius: 5px;
-  background-color: #343a40;
+  background-color: #2D2E33;
   color: white;
   padding: 5px;
 }
@@ -60,6 +59,116 @@ input, label, button, input:focus, label:focus, button:focus, select, select:foc
 
 .navbar {
   margin-bottom: 10px;
+}
+
+[type=checkbox]:checked,
+[type=checkbox]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+[type=checkbox]:checked + label,
+[type=checkbox]:not(:checked) + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #666;
+  user-select: none;
+}
+
+[type=checkbox]:checked + label:before,
+[type=checkbox]:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 10%;
+  background: #242529;
+}
+
+[type=checkbox]:checked + label:after,
+[type=checkbox]:not(:checked) + label:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #FF5454;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 20%;
+  -webkit-transition: all 0.4s cubic-bezier(0.82, -0.39, 0.2, 2.95);
+  transition: all 0.4s cubic-bezier(0.82, -0.39, 0.2, 2.95);
+}
+
+[type=checkbox]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+[type=checkbox]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+[type=radio]:checked,
+[type=radio]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+[type=radio]:checked + label,
+[type=radio]:not(:checked) + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #666;
+  user-select: none;
+}
+
+[type=radio]:checked + label:before,
+[type=radio]:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 10%;
+  background: #a6a8b4;
+}
+
+[type=radio]:checked + label:after,
+[type=radio]:not(:checked) + label:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #FF5454;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 20%;
+  -webkit-transition: all 0.4s cubic-bezier(0.82, -0.39, 0.2, 2.95);
+  transition: all 0.4s cubic-bezier(0.82, -0.39, 0.2, 2.95);
+}
+
+[type=radio]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+[type=radio]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
 /*# sourceMappingURL=main.css.map */
