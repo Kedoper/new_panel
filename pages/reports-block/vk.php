@@ -1,23 +1,23 @@
-<form action="javascript:void(0)">
+<form action="/report-test.php">
     <label for="client_url">Домен или id клиента</label>
     <input type="text" name="client_url" id="client_url" placeholder="@domain или @id123" required
            pattern="@[A-Za-z0-9_]+$">
 
     <div class="pub-row" id="CopyRow" data-pub="0">
-        <label for="pubs">Выберите сообщество</label>
-        <select name="pubs" id="pubs">
-            <option value="test">test</option>
-            <option value="test">test</option>
-            <option value="test">test</option>
-            <option value="test">tetesttesttesttesttestst</option>
-            <option value="test">tetesttesttesttesttesttesttesttestst</option>
-            <option value="test">test</option>
-            <option value="test">testtesttesttesttesttesttesttesttesttesttesttest</option>
-            <option value="test">test</option>
-            <option value="test">test</option>
-            <option value="test">test</option>
+        <label for="pubs0">Выберите сообщество</label>
+        <select name="pubs0" id="pubs0">
+            <option value="test1">test1</option>
+            <option value="test2">test2</option>
+            <option value="test3">test3</option>
+            <option value="test4">tetesttesttesttesttestst</option>
+            <option value="test5">tetesttesttesttesttesttesttesttestst</option>
+            <option value="test6">test4</option>
+            <option value="test7">testtesttesttesttesttesttesttesttesttesttesttest</option>
+            <option value="test8">test5</option>
+            <option value="test9">test6</option>
+            <option value="test10">test7</option>
         </select>
-        <input type="number" name="pubs_count" id="pubs_count" placeholder="Постов" min="1">
+        <input type="number" name="post_count0" id="post_count0" placeholder="Постов" min="1">
     </div>
     <span id="addPubRow"></span>
     <div class="pub-row">
@@ -38,11 +38,11 @@
 
         <div class="pub-row pay_up" id="pay_up_row">
             <label for="pay_up">Наценка (Целое число)</label>
-            <input type="number" id="pay_up" name="pay_up" required min="0" placeholder="<?= rand(1, 100) ?>">
+            <input type="number" id="pay_up" name="pay_up" min="0" value="0" placeholder="<?= rand(1, 100) ?>">
         </div>
         <div class="pub-row pay_off" id="pay_off_row">
             <label for="pay_off">Скидка (Целое число)</label>
-            <input type="number" id="pay_off" name="pay_off" required min="0" placeholder="<?= rand(1, 100) ?>">
+            <input type="number" id="pay_off" name="pay_off" min="0" value="0" placeholder="<?= rand(1, 100) ?>">
         </div>
 
         <label for="client_pay">Сколько заплатил клиент (Целое число)</label>
@@ -74,27 +74,4 @@
 
     <button type="submit">sdaf</button>
 </form>
-
-<script !src="">
-    function togglePayUp_PayOff() {
-        var active = this.dataset.active,
-            target = this.dataset.target;
-
-        if (active !== 'true') {
-            this.dataset.active = 'true';
-            document.getElementById(`${target}_row`).style.display = 'block';
-        } else {
-            this.dataset.active = 'false';
-            document.getElementById(`${target}_row`).style.display = 'none';
-        }
-    }
-
-    function AddPubRow() {
-
-    }
-
-    document.getElementById('isset_payup').addEventListener("change", togglePayUp_PayOff);
-    document.getElementById('isset_payoff').addEventListener("change", togglePayUp_PayOff);
-    document.getElementById('pubRowAdd').addEventListener("click", AddPubRow);
-
-</script>
+<script src="/js/create-report_vk.js?<?= rand(999999, null) ?>"></script>

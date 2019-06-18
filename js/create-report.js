@@ -25,17 +25,3 @@ $(document).ready(function () {
     pageLoader('vk');
 });
 
-$('.custom-list__item').on('click', function () {
-    $('.custom-list__item.select').removeClass("select");
-    pageLoader($(this).data('place'));
-    $(this).addClass('select');
-});
-
-// TODO Доделать функцию ниже
-function add() {
-    totalPubs = totalPubs + 1;
-    console.log(totalPubs);
-    var item = $('#CopyRow').clone();
-    $(item).data('pub', totalPubs);
-    $(item).appendTo('#ttt');
-}

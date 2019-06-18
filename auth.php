@@ -43,13 +43,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
                     <div class="col form-wrap">
                         <form action="javascript:void(0)" id="form_reg">
                             <label for="new-login">Придумайте логин</label>
-                            <input type="text" name="login" id="new-login" required>
+                            <input type="text" name="login" id="new-login" required autocomplete="off">
 
                             <label for="new-email">Введите действительный Email</label>
-                            <input type="email" name="new-email" id="new-email" required>
+                            <input type="email" name="new-email" id="new-email" required autocomplete="off">
 
                             <label for="new-telephone">Введите действительный номер телефона</label>
-                            <input type="tel" name="new-telephone" id="new-telephone" required>
+                            <input type="tel" name="new-telephone" id="new-telephone" required autocomplete="off">
 
                             <label for="level">Кто вы?</label>
                             <select name="level" id="level" required>
@@ -59,10 +59,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
                             </select>
 
                             <label for="new-pass">Придумайте пароль</label>
-                            <input type="password" name="new-pass" id="new-pass" required>
+                            <input type="password" name="new-pass" id="new-pass" required autocomplete="new-password">
 
                             <label for="re-pass">Повторите пароль</label>
-                            <input type="password" name="re-pass" id="re-pass" required>
+                            <input type="password" name="re-pass" id="re-pass" required autocomplete="new-password">
 
                             <button type="submit">Зарегистрироваться</button>
                         </form>

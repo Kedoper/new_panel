@@ -1,4 +1,8 @@
 @import url("/scss/main.scss");
+input, button, select {
+  background-color: #242529;
+}
+
 body {
   overflow: hidden;
 }
