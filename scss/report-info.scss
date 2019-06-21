@@ -1,0 +1,14 @@
+@import "main";
+@import "home";
+
+.row__title {
+  padding: 0 15px;
+}
+.info-row {
+  margin: 50px 0;
+  padding: 15px;
+  background-color: $section_bg_color;
+  &>p>span{
+    margin-left: 15px;
+  }
+}

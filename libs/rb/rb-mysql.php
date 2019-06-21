@@ -13842,8 +13842,8 @@ class Facade
 
 	/**
 	 * MatchUp is a powerful productivity boosting method that can replace simple control
-	 * scripts with a single RedBeanPHP command. Typically, matchUp() is used to
-	 * replace login scripts, token generation scripts and password reset scripts.
+	 * tests with a single RedBeanPHP command. Typically, matchUp() is used to
+	 * replace login tests, token generation tests and password reset tests.
 	 * The MatchUp method takes a bean type, an SQL query snippet (starting at the WHERE clause),
 	 * SQL bindings, a pair of task arrays and a bean reference.
 	 *
@@ -15361,8 +15361,8 @@ class MatchUp
 
 	/**
 	 * MatchUp is a powerful productivity boosting method that can replace simple control
-	 * scripts with a single RedBeanPHP command. Typically, matchUp() is used to
-	 * replace login scripts, token generation scripts and password reset scripts.
+	 * tests with a single RedBeanPHP command. Typically, matchUp() is used to
+	 * replace login tests, token generation tests and password reset tests.
 	 * The MatchUp method takes a bean type, an SQL query snippet (starting at the WHERE clause),
 	 * SQL bindings, a pair of task arrays and a bean reference.
 	 *

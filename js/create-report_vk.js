@@ -1,7 +1,7 @@
 focus = false;
 
 function togglePayUp_PayOff() {
-    var active = this.dataset.active,
+    let active = this.dataset.active,
         target = this.dataset.target;
 
     if (active !== 'true') {
@@ -24,7 +24,7 @@ window.onfocus = function(){ focus = true; } //пользователь на в�
 window.onblur = function(){ focus = false; }
 setInterval(function () {
     if (focus) {
-        var pubs_post = $('input[name*="post_count"]'),
+        let pubs_post = $('input[name*="post_count"]'),
             total_posts = 0,
 
             // Значения полей
@@ -40,18 +40,19 @@ setInterval(function () {
             $("#total_posts").val(total_posts);
         });
 
-        var pre_total = (client_pay_now - (admin_send_now + commission_now)).toFixed(2);
+        let pre_total = (client_pay_now - (admin_send_now + commission_now)).toFixed(2);
 
         $("#total").val(pre_total);
         $("#total_posts").val(total_posts);
     }
 
-}, 2000);
+}, 1000);
 
 
 function add() {
     totalPubs = totalPubs + 1;
-    var line = `
+    $("#pubCounter").val(parseInt($("#pubCounter").val()) + 1);
+    let line = `
         <div class="pub-row" data-pub="${totalPubs}">
         <label for="pubs${totalPubs}">Выберите сообщество</label>
         <select name="pubs${totalPubs}" id="pubs${totalPubs}">
@@ -75,7 +76,7 @@ function add() {
 // TODO Сделать загузку файлов на сервер
 function sendReport() {
 
-    var pubs = $('select[name*="pubs"]'),
+    let pubs = $('select[name*="pubs"]'),
         pubs_post = $('input[name*="post_count"]'),
         pre_pubs = [],
         pre_posts = [],
@@ -91,13 +92,13 @@ function sendReport() {
             pre_posts.push($(this).val());
         }
     });
-    for (var key in pre_pubs) {
+    for (let key in pre_pubs) {
         pubs_values.push({'pub': pre_pubs[key], 'posts': pre_posts[key]});
     }
     console.log(pubs_values);
 
 
-    var sendData = {
+    let sendData = {
         cart: pubs_values,
         client: $("#client_url").val(),
         pay_up: $("#pay_up").val(),
@@ -112,8 +113,10 @@ function sendReport() {
     };
     $.ajax({
         type: "POST",
-        data: sendData,
+        data: new FormData(document.getElementById('vk_form')),
         url: "/report-test.php",
+        contentType: false, // важно - убираем форматирование данных по умолчанию
+        processData: false, // важно - убираем преобразование строк по умолчанию
         success: function () {
             console.warn("success");
         }

@@ -19,6 +19,9 @@ if (!empty($_SESSION['login_token'])) {
             case "create-report":
                 include $_SERVER['DOCUMENT_ROOT'].getenv("HOME_DIR")."/create-report.php";
                 break;
+            case "report":
+                include $_SERVER['DOCUMENT_ROOT'].getenv("HOME_DIR")."/showReportInfo.php";
+                break;
             default:
                 header("Location: /?home");
                 break;

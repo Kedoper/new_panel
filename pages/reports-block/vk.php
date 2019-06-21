@@ -1,4 +1,5 @@
-<form action="/report-test.php">
+<form action="javascript:void(0)" id="vk_form" enctype="multipart/form-data">
+    <input type="number" name="pubCounter" id="pubCounter" value="1" hidden="hidden">
     <label for="client_url">Домен или id клиента</label>
     <input type="text" name="client_url" id="client_url" placeholder="@domain или @id123" required
            pattern="@[A-Za-z0-9_]+$">
@@ -21,7 +22,7 @@
     </div>
     <span id="addPubRow"></span>
     <div class="pub-row">
-        <button type="button" id="pubRowAdd" onclick="add()">Добавить</button>
+        <button type="button" class="add-pub-row-btn" id="pubRowAdd" onclick="add()">Добавить</button>
     </div>
     <div class="test" id="ttt"></div>
 
@@ -72,6 +73,6 @@
         <input type="file" id="photos" name="photos[]" multiple required>
     </div>
 
-    <button type="submit">sdaf</button>
+    <button type="submit" class="submit-btn">Отправить</button>
 </form>
 <script src="/js/create-report_vk.js?<?= rand(999999, null) ?>"></script>
