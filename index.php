@@ -8,6 +8,7 @@ function pre($data = [])
 
 $page = array_keys($_REQUEST);
 if (!empty($_SESSION['login_token'])) {
+    if ($_SESSION['logged_user']['active'] == 0) header("Location: /disabled");
     if ($_SERVER['REQUEST_METHOD'] == "GET"){
         switch ($page[0]){
             case "home":
