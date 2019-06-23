@@ -1,4 +1,5 @@
 totalPubs = 0;
+pubs = {};
 
 function pageLoader(page) {
     $.ajax({
@@ -21,7 +22,25 @@ function pageLoader(page) {
     });
 }
 
+function pubsLoader() {
+    $.ajax({
+        url: `/engine/handlers/loaders/loadPubsList.php`,
+        success: function (data) {
+           data = JSON.parse(data);
+           data.forEach(function (item) {
+               pubs[item.id] = item.title;
+           });
+        },
+        error: function () {
+            $('#message_slider__header').html("Ошибка");
+            $('#message_slider__text').html("Возникла ошибка при загрузке данных с сервера, потворите попытку позже");
+            openMessageSlider();
+        }
+    });
+}
+
 $(document).ready(function () {
     pageLoader('vk');
+    pubsLoader();
 });
 

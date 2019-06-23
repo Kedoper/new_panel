@@ -2,7 +2,7 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/settings/loadAll.php';
 
 //$loader = R::findAll('reports','user = ?', [$_SESSION['logged_user']['login']]);
-$loader = R::findAll('reports','user = ? ORDER BY id DESC', ['kolab']);
+$loader = R::findAll('reports','user = ? ORDER BY id DESC LIMIT 14', ['kolab']);
 
 $response = [];
 foreach ($loader as $item) {

@@ -1,3 +1,6 @@
+document.getElementById('isset_payup').addEventListener("change", togglePayUp_PayOff);
+document.getElementById('isset_payoff').addEventListener("change", togglePayUp_PayOff);
+
 focus = false;
 
 function togglePayUp_PayOff() {
@@ -18,10 +21,14 @@ $('.custom-list__item').on('click', function () {
     pageLoader($(this).data('place'));
     $(this).addClass('select');
 });
+$('#vk_form').on('submit', sendReport);
 
-
-window.onfocus = function(){ focus = true; } //пользователь на вкладке сайте
-window.onblur = function(){ focus = false; }
+window.onfocus = function () {
+    focus = true;
+} //пользователь на вкладке сайте
+window.onblur = function () {
+    focus = false;
+}
 setInterval(function () {
     if (focus) {
         let pubs_post = $('input[name*="post_count"]'),
@@ -49,80 +56,59 @@ setInterval(function () {
 }, 1000);
 
 
+function addOptions(id) {
+    for (let key in pubs) {
+        $(`#${id}`).append($('<option></option>').attr('value', key).text(pubs[key]))
+    }
+}
+
 function add() {
     totalPubs = totalPubs + 1;
     $("#pubCounter").val(parseInt($("#pubCounter").val()) + 1);
     let line = `
         <div class="pub-row" data-pub="${totalPubs}">
         <label for="pubs${totalPubs}">Выберите сообщество</label>
-        <select name="pubs${totalPubs}" id="pubs${totalPubs}">
-            <option value="test1">test1</option>
-            <option value="test2">test2</option>
-            <option value="test3">test3</option>
-            <option value="test4">tetesttesttesttesttestst</option>
-            <option value="test5">tetesttesttesttesttesttesttesttestst</option>
-            <option value="test6">test4</option>
-            <option value="test7">testtesttesttesttesttesttesttesttesttesttesttest</option>
-            <option value="test8">test5</option>
-            <option value="test9">test6</option>
-            <option value="test10">test7</option>
-        </select>
+        <select name="pubs${totalPubs}" id="pubs${totalPubs}"></select>
         <input type="number" name="post_count${totalPubs}" id="post_count${totalPubs}" placeholder="Постов" min="1">
     </div>
     `;
-
     $("#ttt").append(line);
+    let added = $(line).children()[1];
+    let added_id = $(added).attr('id');
+    addOptions(added_id);
+
 }
-// TODO Сделать загузку файлов на сервер
+
 function sendReport() {
-
-    let pubs = $('select[name*="pubs"]'),
-        pubs_post = $('input[name*="post_count"]'),
-        pre_pubs = [],
-        pre_posts = [],
-        pubs_values = [];
-
-    pubs.each(function () {
-        if ($(this).val() !== undefined) {
-            pre_pubs.push($(this).val());
-        }
-    });
-    pubs_post.each(function () {
-        if ($(this).val() !== undefined) {
-            pre_posts.push($(this).val());
-        }
-    });
-    for (let key in pre_pubs) {
-        pubs_values.push({'pub': pre_pubs[key], 'posts': pre_posts[key]});
-    }
-    console.log(pubs_values);
-
-
-    let sendData = {
-        cart: pubs_values,
-        client: $("#client_url").val(),
-        pay_up: $("#pay_up").val(),
-        pay_off: $("#pay_off").val(),
-        client_pay: $("#client_pay").val(),
-        admin_send: $("#admin_send").val(),
-        commission: $("#commission").val(),
-        total: $("#total").val(),
-        total_posts: $("#total_posts").val(),
-        feedback_count: $("#feedback_count").val(),
-        comment: $("#operation_comment").val(),
-    };
+    $('#message_slider__header').html("Ожидание");
+    $('#message_slider__text').html("Идет создание отчета, не закрывайте данную страницу");
+    openMessageSlider();
     $.ajax({
         type: "POST",
         data: new FormData(document.getElementById('vk_form')),
-        url: "/report-test.php",
+        url: "/engine/handlers/actions/createReport_VK.php",
         contentType: false, // важно - убираем форматирование данных по умолчанию
         processData: false, // важно - убираем преобразование строк по умолчанию
-        success: function () {
-            console.warn("success");
+        success: function (data) {
+            data = JSON.parse(data);
+            if (data.code !== 0) {
+                $('#senderButtonVK').attr('hidden', 'hidden');
+                $('#message_slider__header').html("Успех!");
+                $('#message_slider__text').html(data.message + "\nПерезагрузка через 5 секунд");
+                setTimeout(function () {
+                    location.reload();
+                }, 5000);
+
+            } else {
+                $('#message_slider__header').html("Есть проблемы");
+                $('#message_slider__text').html(data.message);
+            }
         }
     })
 }
 
-
-document.getElementById('isset_payup').addEventListener("change", togglePayUp_PayOff);
-document.getElementById('isset_payoff').addEventListener("change", togglePayUp_PayOff);
+$(document).ready(function () {
+    setTimeout(function () {
+        addOptions('pubs0')
+    }, 500);
+});

@@ -17,6 +17,17 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
 ?>
+<div class="message-slide ms-item" id="message_slider">
+    <div class="message-slide__header ms-item">
+        <span class="ms-item" id="message_slider__header">{MESSAGE_SLIDER_HEADER}</span>
+    </div>
+    <div class="message-slide__text ms-item">
+        <span class="ms-item" id="message_slider__text">{MESSAGE_SLIDER_TEXT}</span>
+    </div>
+    <div class="message-slide__button ms-item">
+        <button class="ms-item" type="button">Закрыть</button>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row cr-row">
         <div class="col-12 text-center">
@@ -44,5 +55,6 @@ include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
 </body>
 <script src="/libs/bootstrap/js/bootstrap.bundle.min.js?<?= rand(999999, null) ?>"></script>
 <script src="/js/create-report.js?<?= rand(999999, null) ?>"></script>
+<script src="/js/static.js?<?= rand(999999, null) ?>"></script>
 
 </html>

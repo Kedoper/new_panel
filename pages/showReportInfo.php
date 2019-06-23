@@ -8,7 +8,9 @@ $report_search = R::load('reports', $_GET['id']);
 function getCard($img){
     $url = '"/uploads/reports/vk/'.$img.'"';
     $card = "<div class='photos-item' style='background-image: url({$url})'
-                             onclick='openImg({$url})'></div>";
+                             onclick='openImg({$url})'>
+                             <div class='clear'></div>
+</div>";
     return $card;
 }
 

@@ -1,15 +1,14 @@
 <?php
-
-
 include $_SERVER['DOCUMENT_ROOT'] . "/settings/loadAll.php";
 
 use VK\Client\VKApiClient;
 
-if ($_SERVER['REQUEST_METHOD'] != "POST" || empty($_POST)) {
+if (empty($_SESSION['logged_user']['login']) || $_SERVER['REQUEST_METHOD'] != "POST" || empty($_POST)) {
     print_r(json_encode([
         'code' => 0,
         'message' => "Возникла ошибка. Повторите позже."
     ]));
+    die();
 } else {
     $data = $_POST;
     $vk = new VKApiClient();
@@ -17,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] != "POST" || empty($_POST)) {
     $screen_patch = [];
     foreach ($_FILES['photos']['name'] as $k => $val) {
         $file_name = time() . ".png";
-        $files_dir = $_SERVER['DOCUMENT_ROOT'] . getenv('UPLOADS_DIR') . "/reports/vk/" .$file_name;
+        $files_dir = $_SERVER['DOCUMENT_ROOT'] . getenv('UPLOADS_DIR') . "/reports/vk/" . $file_name;
         $screen_patch['invoice'][] = $file_name;
         copy("{$_FILES['photos']['tmp_name'][$k]}", "{$files_dir}");
         sleep(1);
     }
     $cart = [];
-    for ($i = 0;$i < $data['pubCounter']-1;$i++) {
+    for ($i = 0; $i < $data['pubCounter'] - 1; $i++) {
         $cart[] = [
             'pub_id' => $data["pubs{$i}"],
             'posts_count' => $data["post_count{$i}"]
@@ -31,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] != "POST" || empty($_POST)) {
     }
     $client_domain = explode('@', $data['client_url']);
     $client_domain = $client_domain[1];
-    $user = $vk->users()->get('db75892feaaacdb3f779b2433b572fd1d774831ede9a8ee6f7dec94d0f42a6205cd73acc950ed5e2a30f6',[
+    $user = $vk->users()->get('db75892feaaacdb3f779b2433b572fd1d774831ede9a8ee6f7dec94d0f42a6205cd73acc950ed5e2a30f6', [
         'user_ids' => $client_domain
     ]);
 
@@ -48,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] != "POST" || empty($_POST)) {
     $new_report->basket = json_encode($cart);
     $new_report->files = json_encode($screen_patch);
     $new_report->datetime = time();
+    $new_report->operation_comment = $data['operation_comment'];
     R::store($new_report);
 
     print_r(json_encode([

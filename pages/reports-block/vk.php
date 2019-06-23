@@ -6,18 +6,7 @@
 
     <div class="pub-row" id="CopyRow" data-pub="0">
         <label for="pubs0">Выберите сообщество</label>
-        <select name="pubs0" id="pubs0">
-            <option value="test1">test1</option>
-            <option value="test2">test2</option>
-            <option value="test3">test3</option>
-            <option value="test4">tetesttesttesttesttestst</option>
-            <option value="test5">tetesttesttesttesttesttesttesttestst</option>
-            <option value="test6">test4</option>
-            <option value="test7">testtesttesttesttesttesttesttesttesttesttesttest</option>
-            <option value="test8">test5</option>
-            <option value="test9">test6</option>
-            <option value="test10">test7</option>
-        </select>
+        <select name="pubs0" id="pubs0" required></select>
         <input type="number" name="post_count0" id="post_count0" placeholder="Постов" min="1">
     </div>
     <span id="addPubRow"></span>
@@ -73,6 +62,6 @@
         <input type="file" id="photos" name="photos[]" multiple required>
     </div>
 
-    <button type="submit" class="submit-btn">Отправить</button>
+    <button type="submit" class="submit-btn" id="senderButtonVK">Отправить</button>
 </form>
 <script src="/js/create-report_vk.js?<?= rand(999999, null) ?>"></script>
