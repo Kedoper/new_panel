@@ -35,8 +35,8 @@ setInterval(function () {
             total_posts = 0,
 
             // Значения полей
-            client_pay_now = parseInt($('#client_pay').val()),
-            admin_send_now = parseInt($('#admin_send').val()),
+            client_pay_now = parseFloat($('#client_pay').val()),
+            admin_send_now = parseFloat($('#admin_send').val()),
             commission_now = parseFloat($('#commission').val());
 
         pubs_post.each(function () {

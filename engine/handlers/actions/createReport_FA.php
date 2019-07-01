@@ -32,6 +32,7 @@ if (empty($_SESSION['logged_user']['login']) || $_SERVER['REQUEST_METHOD'] != "P
     $new_report->user = $_SESSION['logged_user']['login'];
     $new_report->worker_url = $user[0]['id'];
     $new_report->place = $data['place'];
+    $new_report->tariff = $data['tariff'];
     $new_report->our_email = $data['our_email'];
     $new_report->worker_url_fa = $data['worker_url_fa'];
     $new_report->client_email = $data['client_email'];

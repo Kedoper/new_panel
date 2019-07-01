@@ -24,7 +24,7 @@ function pageLoader(page) {
 
 function pubsLoader() {
     $.ajax({
-        url: `/engine/handlers/loaders/loadPubsList.php`,
+        url: `/engine/loaders/loadPubsList.php`,
         success: function (data) {
            data = JSON.parse(data);
            data.forEach(function (item) {

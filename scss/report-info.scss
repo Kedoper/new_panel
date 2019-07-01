@@ -4,11 +4,35 @@
 .row__title {
   padding: 0 15px;
 }
+
 .info-row {
   margin: 50px 0;
   padding: 15px;
   background-color: $section_bg_color;
-  &>p>span{
-    margin-left: 15px;
+
+  &__right-side > p > span {
+    margin-left: 10px;
   }
+
+  &__right-side > .row__title, &__left-side > .row__title {
+    display: block;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  &__right-side {
+    margin-left: 50px;
+  }
+}
+.table-wrap {
+  min-width: 640px;
+}
+td {
+  padding: 6px;
+}
+tr.odd {
+  background-color: #2d2e33;
+}
+tr.even {
+  background-color: #343a40;
 }

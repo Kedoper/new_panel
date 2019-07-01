@@ -1,8 +1,8 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/settings/loadAll.php";
 //print_r($_POST);
-//$search_user = R::findOne('users', 'login = ?', [$_POST['reg_login']]);
-//if (!$search_user['id']) {
+$search_user = R::findOne('users', 'login = ?', [$_POST['reg_login']]);
+if (!$search_user['id']) {
     try {
         $ga = new PHPGangsta_GoogleAuthenticator();
 
@@ -42,6 +42,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/settings/loadAll.php";
             "message" => "При регистрации возникли проблемы, подробнее: ".$exception->getMessage()
         ]));
         die();
-//    }
-
+    }
+} else {
+    print_r(json_encode([
+        "code" => 3,
+        "message" => "Пользователь уже существует"
+    ]));
 }

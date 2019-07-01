@@ -1,6 +1,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . "/settings/loadAll.php";
-
+include $_SERVER['DOCUMENT_ROOT'] . "/libs/vkParser/VkParser.php";
 use VK\Client\VKApiClient;
 
 if (empty($_SESSION['logged_user']['login']) || $_SERVER['REQUEST_METHOD'] != "POST" || empty($_POST)) {
@@ -12,6 +12,8 @@ if (empty($_SESSION['logged_user']['login']) || $_SERVER['REQUEST_METHOD'] != "P
 } else {
     $data = $_POST;
     $vk = new VKApiClient();
+    $vParser = new \VParser\VkParser();
+    $cart = [];
 
     $screen_patch = [];
     foreach ($_FILES['photos']['name'] as $k => $val) {
@@ -21,21 +23,20 @@ if (empty($_SESSION['logged_user']['login']) || $_SERVER['REQUEST_METHOD'] != "P
         copy("{$_FILES['photos']['tmp_name'][$k]}", "{$files_dir}");
         sleep(1);
     }
-    $cart = [];
-    for ($i = 0; $i < $data['pubCounter'] - 1; $i++) {
+
+    for ($i = 0; $i < $data['pubCounter']; $i++) {
         $cart[] = [
             'pub_id' => $data["pubs{$i}"],
             'posts_count' => $data["post_count{$i}"]
         ];
     }
-    $client_domain = explode('@', $data['client_url']);
-    $client_domain = $client_domain[1];
+    $client_domain = $vParser->getDomain($data['client_url']);
     $user = $vk->users()->get('db75892feaaacdb3f779b2433b572fd1d774831ede9a8ee6f7dec94d0f42a6205cd73acc950ed5e2a30f6', [
         'user_ids' => $client_domain
     ]);
 
     $new_report = R::dispense('reports');
-    $new_report->user = $_SESSION['logged_user']['login'];
+    $new_report->user = $_SESSION['logged_user']['id'];
     $new_report->client = $user[0]['id'];
     $new_report->total_price = $data['total'];
     $new_report->total_posts = $data['total_posts'];
@@ -49,6 +50,13 @@ if (empty($_SESSION['logged_user']['login']) || $_SERVER['REQUEST_METHOD'] != "P
     $new_report->datetime = time();
     $new_report->operation_comment = $data['operation_comment'];
     R::store($new_report);
+
+    $new_client = R::dispense('clients');
+    $new_client->vk = $user[0]['id'];
+    $new_client->first_name = $user[0]['first_name'];
+    $new_client->last_name = $user[0]['last_name'];
+    $new_client->last_buy = time();
+    R::store($new_client);
 
     print_r(json_encode([
         'code' => 1,

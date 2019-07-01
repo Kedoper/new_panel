@@ -55,6 +55,5 @@ include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
 </body>
 <script src="/libs/bootstrap/js/bootstrap.bundle.min.js?<?= rand(999999, null) ?>"></script>
 <script src="/js/create-report.js?<?= rand(999999, null) ?>"></script>
-<script src="/js/static.js?<?= rand(999999, null) ?>"></script>
 
 </html>

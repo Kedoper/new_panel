@@ -1,9 +1,16 @@
 <?php
+$roles = [
+    'admin',
+    'server',
+];
 if (!empty($_SESSION['login_token'])) {
+    $update_session = R::load('users', $_SESSION['logged_user']['id']);
+    $_SESSION['logged_user'] = $update_session;
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -14,10 +21,19 @@ if (!empty($_SESSION['login_token'])) {
                 <li class="nav-item" data-hlink="1">
                     <a class="nav-link" href="/?create-report">Создать отчет</a>
                 </li>
-                <li class="nav-item" data-hlink="2">
+                <?
+                if (in_array($_SESSION['logged_user']['level'], $roles)) {
+                    ?>
+                    <li class="nav-item" data-hlink="2">
+                        <a class="nav-link" href="/?reports">Отчеты</a>
+                    </li>
+                    <?
+                }
+                ?>
+                <li class="nav-item" data-hlink="3">
                     <a class="nav-link disabled" href="/?create-invoice">Выставить счет</a>
                 </li>
-                <li class="nav-item" data-hlink="3">
+                <li class="nav-item" data-hlink="4">
                     <a class="nav-link " href="/?settings">Настройки</a>
                 </li>
             </ul>
@@ -42,18 +58,4 @@ if (!empty($_SESSION['login_token'])) {
 ?>
 <script !src="">
     var page = `<?=$page[0]?>`;
-    switch (page) {
-        case "home":
-            document.querySelector('.nav-item[data-hlink="0"]').classList.add("active");
-            break;
-        case "create-report":
-            document.querySelector('.nav-item[data-hlink="1"]').classList.add("active");
-            break;
-        case "create-invoice":
-            document.querySelector('.nav-item[data-hlink="2"]').classList.add("active");
-            break;
-        case "settings":
-            document.querySelector('.nav-item[data-hlink="3"]').classList.add("active");
-            break;
-    }
 </script>

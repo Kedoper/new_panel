@@ -1,8 +1,7 @@
 <form action="javascript:void(0)" id="vk_form" enctype="multipart/form-data">
     <input type="number" name="pubCounter" id="pubCounter" value="1" hidden="hidden">
-    <label for="client_url">Домен или id клиента</label>
-    <input type="text" name="client_url" id="client_url" placeholder="@domain или @id123" required
-           pattern="@[A-Za-z0-9_]+$">
+    <label for="client_url">Ссылка на клиента (Любого вида)</label>
+    <input type="text" name="client_url" id="client_url" placeholder="@domain или @id123" required>
 
     <div class="pub-row" id="CopyRow" data-pub="0">
         <label for="pubs0">Выберите сообщество</label>
@@ -38,11 +37,11 @@
         <label for="client_pay">Сколько заплатил клиент (Целое число)</label>
         <input type="number" id="client_pay" name="client_pay" required min="0" placeholder="<?= rand(1, 100) ?>">
 
-        <label for="admin_send">Отправлено Администраторам (Целое число)</label>
-        <input type="number" id="admin_send" name="admin_send" required min="0" placeholder="<?= rand(1, 100) ?>">
+        <label for="admin_send">Отправлено Администраторам</label>
+        <input type="number" id="admin_send" name="admin_send" required min="0" step="any" placeholder="<?= rand(1, 100) ?>">
 
         <label for="commission">Коммисия</label>
-        <input type="number" id="commission" name="commission" required min="0" placeholder="15.34">
+        <input type="number" id="commission" name="commission" required min="0" step="any" placeholder="15.34">
 
         <label for="total">Заработок проекта</label>
         <input type="text" id="total" name="total" readonly>
