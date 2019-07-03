@@ -37,6 +37,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/static/header.php";
                     <td>Дата и время создания</td>
                     <td>WP</td>
                     <td>Подробнее</td>
+                    <td>Действия</td>
                 </tr>
                 </thead>
                 <tbody>

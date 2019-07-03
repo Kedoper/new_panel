@@ -9,7 +9,17 @@ $(document).ready(function () {
         info: false,
         "language": {
             "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Russian.json"
-        }
+        },
+        "columns": [
+            { "visible": true },
+            { "visible": false },
+            { "visible": true },
+            { "visible": true },
+            { "visible": true },
+            { "visible": true },
+            { "visible": true },
+            { "visible": true },
+        ]
     });
     loadReportList();
 });
@@ -26,9 +36,8 @@ function loadReportList() {
 }
 
 function renderTable(json) {
-    console.log(json);
     for (let key in json) {
-        table.row.add( [json[key].id,json[key].timestamp,json[key].social, json[key].creator, json[key].datetime, json[key].wp_amount, `<a href="/?report&${json[key].link}=${json[key].id}" target="_blank">Ссылка</a>`] ).draw();
+        table.row.add( [json[key].id,json[key].timestamp,json[key].social, json[key].creator, json[key].datetime, json[key].wp_amount, `<a href="/?report&${json[key].link}=${json[key].id}" target="_blank">Ссылка</a>`,`<ul><li><a href="/?edit&target=${json[key].link}-${json[key].id}">Изменить</a></li><li><a href="/?delete&target=${json[key].link}-${json[key].id}">Удалить</a></li></ul>`] ).draw();
     }
     // table
 }

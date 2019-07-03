@@ -27,13 +27,16 @@ if (!empty($_SESSION['login_token'])) {
                     <li class="nav-item" data-hlink="2">
                         <a class="nav-link" href="/?reports">Отчеты</a>
                     </li>
+                    <li class="nav-item" data-hlink="3">
+                        <a class="nav-link" href="/?users">Пользователи</a>
+                    </li>
                     <?
                 }
                 ?>
-                <li class="nav-item" data-hlink="3">
+                <li class="nav-item" data-hlink="4">
                     <a class="nav-link disabled" href="/?create-invoice">Выставить счет</a>
                 </li>
-                <li class="nav-item" data-hlink="4">
+                <li class="nav-item" data-hlink="5">
                     <a class="nav-link " href="/?settings">Настройки</a>
                 </li>
             </ul>
@@ -59,3 +62,4 @@ if (!empty($_SESSION['login_token'])) {
 <script !src="">
     var page = `<?=$page[0]?>`;
 </script>
+<script src="/js/static.js?<?=rand()?>"></script>

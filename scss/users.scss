@@ -1,0 +1,53 @@
+@import 'main';
+
+nav {
+  z-index: 999999;
+}
+ul {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.info-message-block {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  & > .info-text {
+    position: relative;
+    padding: 20px;
+    border: 1px solid $warn_color;
+
+    & > p {
+      margin-left: 80px;
+    }
+
+    & > .warn-icon {
+      position: absolute;
+      width: 60px;
+
+      & > path {
+        fill: $warn_color;
+      }
+    }
+  }
+}
+.editUserWindow {
+  background-color: #747b82;
+  padding: 40px;
+  position: absolute;
+  top: 77px;
+  left: 0;
+  z-index: 999998;
+  width: 100%;
+  height: calc(100% - 77px);
+  transition: top .2s ease-out;
+  &.hide {
+    top: -100%;
+    transition: top .2s ease-out;
+  }
+}

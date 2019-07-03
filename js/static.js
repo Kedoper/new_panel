@@ -1,3 +1,15 @@
+works_array = {
+    'manager': "Менеджер Вконтакте",
+    'manager_fa': "Менеджер ФА",
+    'server': "Dev",
+    'admin': "Администратор"
+};
+statuses_array = {
+    0:"Необходимо подтверждение",
+    1:"Активен",
+    2:"Заблокирован",
+};
+
 switch (page) {
     case "home":
         document.querySelector('.nav-item[data-hlink="0"]').classList.add("active");
@@ -8,11 +20,14 @@ switch (page) {
     case "reports":
         document.querySelector('.nav-item[data-hlink="2"]').classList.add("active");
         break;
-    case "create-invoice":
+    case "users":
         document.querySelector('.nav-item[data-hlink="3"]').classList.add("active");
         break;
-    case "settings":
+    case "create-invoice":
         document.querySelector('.nav-item[data-hlink="4"]').classList.add("active");
+        break;
+    case "settings":
+        document.querySelector('.nav-item[data-hlink="5"]').classList.add("active");
         break;
 }
 
